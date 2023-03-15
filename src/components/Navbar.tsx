@@ -19,17 +19,21 @@ import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineUser } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
+import { BsCart3 } from "react-icons/bs";
 import Logo from "../assets/logo.png";
-import { useRef } from "react";
+import { useState } from "react";
+import CartDrawer from "./CartDrawer";
+import MenuDrawer from "./MenuDrawer";
 
 const Navbar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = useRef<HTMLButtonElement>(null);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [cartIsOpen, setCartIsOpen] = useState(false);
 
   return (
     <Box as="nav" bg="blackAlpha.900" color="gray.100" fontSize="sm">
       <Container maxW="container.xl" py="1rem">
-        <Flex justifyContent="space-between">
+        <Flex justifyContent="space-between" alignItems="center">
+          {/* Hamburger menu button */}
           <IconButton
             aria-label="hamburger-menu"
             icon={<RxHamburgerMenu />}
@@ -37,12 +41,12 @@ const Navbar = () => {
             color="gray.100"
             variant="no-outline"
             display={{ base: "block", md: "none" }}
-            onClick={onOpen}
-            ref={btnRef}
+            onClick={() => setMenuIsOpen(true)}
           />
+
+          {/* Navbar Logo */}
           <Link to="/">
             <Image
-              borderRadius="full"
               boxSize={50}
               objectFit="cover"
               src={Logo}
@@ -50,63 +54,44 @@ const Navbar = () => {
             />
           </Link>
 
-          <HStack gap="1rem" display={{ base: "none", md: "flex" }}>
-            <Link to="/keyboards">Keyboards</Link>
-            <Link to="/keycaps">Keycaps</Link>
-            <Link to="/mouse">Mouse</Link>
-            <Link to="/deskmats">Deskmats</Link>
-            <Link to="/swithes">Switchuri</Link>
-            <Link to="/accesories">Accesorii</Link>
+          <HStack>
+            <HStack gap="1rem" display={{ base: "none", md: "flex" }}>
+              <Link to="/keyboards">Keyboards</Link>
+              <Link to="/keycaps">Keycaps</Link>
+              <Link to="/mouse">Mouse</Link>
+              <Link to="/deskmats">Deskmats</Link>
+              <Link to="/swithes">Switchuri</Link>
+              <Link to="/accesories">Accesorii</Link>
 
-            <HStack fontSize={20} gap="10px">
-              <Link to="">
-                <FiSearch />
-              </Link>
-              <Link to="/login">
-                <AiOutlineUser />
-              </Link>
+              <HStack fontSize={20} gap="10px">
+                <Link to="">
+                  <FiSearch />
+                </Link>
+                <Link to="/login">
+                  <AiOutlineUser />
+                </Link>
+              </HStack>
             </HStack>
+
+            {/* Cart button */}
+            <IconButton
+              icon={<BsCart3 />}
+              aria-label="Cart button"
+              variant="no-outlined"
+              fontSize={{ base: 24, md: 20 }}
+              onClick={() => setCartIsOpen(true)}
+            />
           </HStack>
 
-          <Drawer
-            isOpen={isOpen}
-            placement="left"
-            onClose={onClose}
-            finalFocusRef={btnRef}
-          >
-            <DrawerOverlay />
-            <DrawerContent>
-              <DrawerCloseButton />
-              <DrawerHeader>Menu</DrawerHeader>
+          <MenuDrawer
+            isOpen={menuIsOpen}
+            onClose={() => setMenuIsOpen(false)}
+          />
 
-              <DrawerBody>
-                <VStack gap="1rem">
-                  <Link to="/keyboards" onClick={onClose}>
-                    Keyboards
-                  </Link>
-                  <Link to="/keycaps" onClick={onClose}>
-                    Keycaps
-                  </Link>
-                  <Link to="/mouse" onClick={onClose}>
-                    Mouse
-                  </Link>
-                  <Link to="/deskmats" onClick={onClose}>
-                    Deskmats
-                  </Link>
-                  <Link to="/swithes" onClick={onClose}>
-                    Switchuri
-                  </Link>
-                  <Link to="/accesories" onClick={onClose}>
-                    Accesorii
-                  </Link>
-                </VStack>
-              </DrawerBody>
-
-              <DrawerFooter>
-                <Link to="/login">Login</Link>
-              </DrawerFooter>
-            </DrawerContent>
-          </Drawer>
+          <CartDrawer
+            isOpen={cartIsOpen}
+            onClose={() => setCartIsOpen(false)}
+          />
         </Flex>
       </Container>
     </Box>
