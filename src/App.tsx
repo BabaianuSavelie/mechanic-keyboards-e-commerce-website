@@ -1,8 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -10,7 +8,7 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/keyboards" element={<About />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </div>
   );
