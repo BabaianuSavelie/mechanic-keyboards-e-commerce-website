@@ -10,4 +10,8 @@ type GridItemProps = {
    rowspan: number;
 } 
 
-export type {DisclosureProps, GridItemProps}
+type CollectionTitleProps = {
+  title: string;
+}
+
+export type {DisclosureProps, GridItemProps, CollectionTitleProps}
