@@ -1,11 +1,36 @@
+import { Center, Text } from "@chakra-ui/react";
+import { CollectionTitleProps } from "../shared/types";
 
-
-const CollectionTitle = () => {
+const CollectionTitle = ({ title }: CollectionTitleProps) => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <Center
+      position="relative"
+      mt="1rem"
+      minH={{ base: 130, md: 150 }}
+      bgColor="gray.100"
+    >
+      <Text
+        as="h1"
+        fontSize={{ base: 32, md: 48 }}
+        fontWeight="700"
+        position="absolute"
+        top={5}
+        color="blackAlpha.800"
+        zIndex={2}
+      >
+        {title}
+      </Text>
+      <Text
+        as="h1"
+        fontSize={{ base: 64, md: 128 }}
+        fontWeight="700"
+        position="absolute"
+        color="whiteAlpha.900"
+      >
+        {title}
+      </Text>
+    </Center>
+  );
+};
 
-export default CollectionTitle
+export default CollectionTitle;

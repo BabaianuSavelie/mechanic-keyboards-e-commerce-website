@@ -11,7 +11,7 @@ import CollectionItem from "./CollectionItem";
 const CollectionsGrid = () => {
   return (
     <Grid
-      templateColumns={{ base: "1fr", sm: "repeat(8,1fr)" }}
+      templateColumns={{ base: "1fr", md: "repeat(8,1fr)" }}
       templateRows={{ base: "10rem 10rem", sm: "15rem 15rem" }}
       gap={5}
       my="1rem"

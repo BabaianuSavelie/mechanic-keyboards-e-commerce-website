@@ -1,5 +1,6 @@
 import { extendTheme } from "@chakra-ui/react";
 import "@fontsource/montserrat/300.css";
+import "@fontsource/montserrat/700.css";
 
 export const theme = extendTheme({
   fonts: {
