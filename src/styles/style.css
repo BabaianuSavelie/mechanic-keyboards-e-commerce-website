@@ -1,7 +1,10 @@
-.swiper {
+.hero-swiper {
   height: 85vh;
   border-radius: 20px;
   margin-top: 0.8rem;
+}
+.my-swiper-slide {
+  width: auto;
 }
 .swiper-slide img {
   width: 100%;
@@ -22,7 +25,7 @@
 }
 
 @media screen and (max-width: 640px) {
-  .swiper {
+  .hero-swiper {
     height: 300px;
     border-radius: 0;
   }

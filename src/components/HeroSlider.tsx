@@ -1,6 +1,7 @@
 import { Container, Image } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper";
+import CollectionTitle from "./CollectionTitle";
 import Image1 from "../assets/collections/keycaps.webp";
 import Image2 from "../assets/slide1.webp";
 import Image3 from "../assets/slide2.jpg";
@@ -19,7 +20,10 @@ const HeroSlider = () => {
       slidesPerView={1}
       pagination={{ dynamicBullets: true }}
       modules={[Navigation, Autoplay, Pagination]}
+      className="hero-swiper"
     >
+      <CollectionTitle title="Keyboards" />
+
       <SwiperSlide>
         <Image src={Image1} objectFit="cover" w="100%" h="100%" />
       </SwiperSlide>
