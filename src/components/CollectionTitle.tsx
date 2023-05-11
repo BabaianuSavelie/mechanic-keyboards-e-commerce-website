@@ -3,12 +3,7 @@ import { CollectionTitleProps } from "../shared/types";
 
 const CollectionTitle = ({ title }: CollectionTitleProps) => {
   return (
-    <Center
-      position="relative"
-      mt="1rem"
-      minH={{ base: 130, md: 150 }}
-      bgColor="gray.100"
-    >
+    <Center position="relative" mt="1rem" minH={{ base: 130, md: 150 }}>
       <Text
         as="h1"
         fontSize={{ base: 32, md: 48 }}
@@ -17,6 +12,7 @@ const CollectionTitle = ({ title }: CollectionTitleProps) => {
         top={5}
         color="blackAlpha.800"
         zIndex={2}
+        textTransform="capitalize"
       >
         {title}
       </Text>
@@ -26,6 +22,7 @@ const CollectionTitle = ({ title }: CollectionTitleProps) => {
         fontWeight="700"
         position="absolute"
         color="whiteAlpha.900"
+        textTransform="capitalize"
       >
         {title}
       </Text>

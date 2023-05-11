@@ -1,21 +1,15 @@
 import { Container } from "@chakra-ui/react";
+import { BsTypeH1 } from "react-icons/bs";
+import { useQuery } from "react-query";
 import CollectionsGrid from "../components/CollectionsGrid";
-import CollectionTitle from "../components/CollectionTitle";
 import HeroSlider from "../components/HeroSlider";
 import ProductsSlider from "../components/ProductsSlider";
 
 const Home = () => {
   return (
-    <Container maxW="container.2xl">
+    <Container maxW="100%" padding={0}>
       <HeroSlider />
       <CollectionsGrid />
-      {/* <CollectionTitle title="Keyboards" />
-      <CollectionTitle title="Mouse" />
-      <CollectionTitle title="Keycaps" />
-      <CollectionTitle title="Deskmats" />
-      <CollectionTitle title="Switches" /> */}
-
-      <ProductsSlider category="keyboards" />
     </Container>
   );
 };

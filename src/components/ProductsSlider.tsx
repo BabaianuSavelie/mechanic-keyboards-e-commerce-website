@@ -10,11 +10,25 @@ import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 import "../styles/style.css";
 import CollectionTitle from "./CollectionTitle";
+import { supabase } from "../supabaseClient";
+import { useQuery } from "react-query";
 
-const ProductsSlider = () => {
+type Category = {
+  categoryId: number;
+  categoryName: string;
+};
+
+const ProductsSlider = ({ categoryId, categoryName }: Category) => {
+  const fetchProduct = async () => {
+    return await supabase.from("Products").select().eq("category", categoryId);
+  };
+
+  const { data } = useQuery("product", fetchProduct);
+  console.log(data);
+
   return (
-    <Container maxW="container.xl" bg="gray.100">
-      <CollectionTitle title="Keyboards" />
+    <Container maxW="container.xl">
+      <CollectionTitle title={categoryName} />
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
@@ -36,7 +50,7 @@ const ProductsSlider = () => {
         }}
         modules={[Navigation, EffectCoverflow]}
       >
-        <SwiperSlide className="my-swiper-slide" style={{ width: "auto" }}>
+        {/* <SwiperSlide className="my-swiper-slide" style={{ width: "auto" }}>
           <Card maxW="sm" bgColor="transparent">
             <CardBody>
               <Image src={Image1} w="100%" h="100%" />
@@ -77,7 +91,17 @@ const ProductsSlider = () => {
               <Image src={Image1} w="100%" h="100%" />
             </CardBody>
           </Card>
-        </SwiperSlide>
+        </SwiperSlide> */}
+
+        {data?.data?.map((product) => (
+          <SwiperSlide className="my-swiper-slide" style={{ width: "auto" }}>
+            <Card maxW="sm" bgColor="transparent">
+              <CardBody>
+                <Image src={product.thumbnail} w="100%" h="100%" />
+              </CardBody>
+            </Card>
+          </SwiperSlide>
+        ))}
 
         <IconButton
           aria-label="previous-element"
