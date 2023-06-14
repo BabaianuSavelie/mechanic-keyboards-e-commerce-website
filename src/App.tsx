@@ -1,8 +1,11 @@
 import { Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
+import Collections from "./pages/Collections";
+import Products from "./pages/Products";
+import Product from "./pages/ProductPage";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   return (
@@ -10,8 +13,16 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/keyboards" element={<About />} />
+        <Route path="/" element={<Home />} />
+        <Route path="collections" element={<Collections />} />
+        <Route path="/collections/:category" element={<Products />} />
+        <Route
+          path="/collections/:category/products/:slug"
+          element={<ProductPage />}
+        />
       </Routes>
+
+      <Footer />
     </div>
   );
 }

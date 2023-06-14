@@ -21,22 +21,22 @@ const MenuDrawer = ({ isOpen, onClose }: DisclosureProps) => {
 
         <DrawerBody>
           <VStack gap="1rem">
-            <Link to="/keyboards" onClick={onClose}>
+            <Link to="/collections/keyboards" onClick={onClose}>
               Keyboards
             </Link>
-            <Link to="/keycaps" onClick={onClose}>
+            <Link to="/collections/keycaps" onClick={onClose}>
               Keycaps
             </Link>
-            <Link to="/mouse" onClick={onClose}>
+            <Link to="/collections/mouse" onClick={onClose}>
               Mouse
             </Link>
-            <Link to="/deskmats" onClick={onClose}>
+            <Link to="/collections/deskmats" onClick={onClose}>
               Deskmats
             </Link>
-            <Link to="/swithes" onClick={onClose}>
+            <Link to="/collections/switches" onClick={onClose}>
               Switchuri
             </Link>
-            <Link to="/accesories" onClick={onClose}>
+            <Link to="/collections/accesories" onClick={onClose}>
               Accesorii
             </Link>
           </VStack>
