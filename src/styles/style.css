@@ -4,7 +4,7 @@
   margin-top: 0.8rem;
 }
 .my-swiper-slide {
-  width: auto;
+  width: auto !important;
 }
 .swiper-slide img {
   width: 100%;

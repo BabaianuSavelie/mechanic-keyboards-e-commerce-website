@@ -1,5 +1,4 @@
 import { Box, Button, GridItem, Text } from "@chakra-ui/react";
-import React from "react";
 import BoxOverlay from "./BoxOverlay";
 import { GridItemProps } from "../shared/types";
 import { Link } from "react-router-dom";
@@ -36,7 +35,9 @@ const CollectionItem = ({ image, colspan, rowspan, text }: GridItemProps) => {
             {text}
           </Text>
           <Button colorScheme="gray" size="md" borderRadius={0}>
-            <Link to="/keyboards">Vezi produsele</Link>
+            <Link to={`/collections/${text.toLowerCase()}`}>
+              Vezi produsele
+            </Link>
           </Button>
         </Box>
       </Box>

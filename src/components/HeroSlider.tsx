@@ -2,9 +2,10 @@ import { Container, Image } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper";
 import CollectionTitle from "./CollectionTitle";
-import Image1 from "../assets/collections/keycaps.webp";
-import Image2 from "../assets/slide1.webp";
-import Image3 from "../assets/slide2.jpg";
+import HeroThumbnail1 from "../assets/hero/hero-thumbnail1.jpg";
+import HeroThumbnail2 from "../assets/hero/hero-thumbnail2.jpg";
+import HeroThumbnail3 from "../assets/hero/hero-thumbnail3.jpg";
+import HeroThumbnail4 from "../assets/hero/hero-thumbnail4.jpg";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -22,16 +23,18 @@ const HeroSlider = () => {
       modules={[Navigation, Autoplay, Pagination]}
       className="hero-swiper"
     >
-      <CollectionTitle title="Keyboards" />
 
       <SwiperSlide>
-        <Image src={Image1} objectFit="cover" w="100%" h="100%" />
+        <Image src={HeroThumbnail1} objectFit="cover" w="100%" h="100%" />
       </SwiperSlide>
       <SwiperSlide>
-        <Image src={Image2} objectFit="cover" w="100%" h="100%" />
+        <Image src={HeroThumbnail2} objectFit="cover" w="100%" h="100%" />
       </SwiperSlide>
       <SwiperSlide>
-        <Image src={Image3} objectFit="cover" w="100%" h="100%" />
+        <Image src={HeroThumbnail3} objectFit="cover" w="100%" h="100%" />
+      </SwiperSlide>
+      <SwiperSlide>
+        <Image src={HeroThumbnail4} objectFit="cover" w="100%" h="100%" />
       </SwiperSlide>
     </Swiper>
   );

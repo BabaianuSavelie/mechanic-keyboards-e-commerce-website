@@ -56,12 +56,12 @@ const Navbar = () => {
 
           <HStack>
             <HStack gap="1rem" display={{ base: "none", md: "flex" }}>
-              <Link to="/keyboards">Keyboards</Link>
-              <Link to="/keycaps">Keycaps</Link>
-              <Link to="/mouse">Mouse</Link>
-              <Link to="/deskmats">Deskmats</Link>
-              <Link to="/swithes">Switchuri</Link>
-              <Link to="/accesories">Accesorii</Link>
+              <Link to="/collections/keyboards">Keyboards</Link>
+              <Link to="/collections/keycaps">Keycaps</Link>
+              <Link to="/collections/mouse">Mouse</Link>
+              <Link to="/collections/deskmats">Deskmats</Link>
+              <Link to="/collections/switches">Switchuri</Link>
+              <Link to="/collections/accesories">Accesorii</Link>
 
               <HStack fontSize={20} gap="10px">
                 <Link to="">

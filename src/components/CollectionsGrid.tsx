@@ -9,6 +9,7 @@ import BoxOverlay from "./BoxOverlay";
 import CollectionItem from "./CollectionItem";
 
 const CollectionsGrid = () => {
+
   return (
     <Grid
       templateColumns={{ base: "1fr", md: "repeat(8,1fr)" }}

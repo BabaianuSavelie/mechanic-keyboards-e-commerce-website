@@ -1,41 +1,40 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectCoverflow } from "swiper";
-import { Image, Card, CardBody, Container, IconButton } from "@chakra-ui/react";
+import {
+  Image,
+  Card,
+  CardBody,
+  Container,
+  IconButton,
+  CardFooter,
+  Text,
+} from "@chakra-ui/react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import Image1 from "../assets/keyboard1.webp";
-import Image2 from "../assets/keyboard2.webp";
+import { Product } from "../shared/types";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 import "../styles/style.css";
 import CollectionTitle from "./CollectionTitle";
-import { supabase } from "../supabaseClient";
 import { useQuery } from "react-query";
 
 type Category = {
-  categoryId: number;
-  categoryName: string;
+  name: String;
+  products: Product[];
 };
 
-const ProductsSlider = ({ categoryId, categoryName }: Category) => {
-  const fetchProduct = async () => {
-    return await supabase.from("Products").select().eq("category", categoryId);
-  };
-
-  const { data } = useQuery("product", fetchProduct);
-  console.log(data);
-
+const ProductsSlider = ({ name, products }: Category) => {
   return (
-    <Container maxW="container.xl">
-      <CollectionTitle title={categoryName} />
+    <Container maxW="container.xl" my="5rem" py="2rem">
+      <CollectionTitle title={name} />
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
         loop={true}
-        slidesPerView="auto"
-        speed={1500}
+        slidesPerView={5}
+        speed={1300}
         rewind
         coverflowEffect={{
           rotate: 0,
@@ -45,8 +44,20 @@ const ProductsSlider = ({ categoryId, categoryName }: Category) => {
           slideShadows: false,
         }}
         navigation={{
-          prevEl: ".previous",
-          nextEl: ".next",
+          prevEl: ".next",
+          nextEl: ".previous",
+        }}
+        breakpoints={{
+          480: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          992: {
+            slidesPerView: 5,
+          },
         }}
         modules={[Navigation, EffectCoverflow]}
       >
@@ -93,11 +104,11 @@ const ProductsSlider = ({ categoryId, categoryName }: Category) => {
           </Card>
         </SwiperSlide> */}
 
-        {data?.data?.map((product) => (
-          <SwiperSlide className="my-swiper-slide" style={{ width: "auto" }}>
+        {products.map((product) => (
+          <SwiperSlide key={product.id} className="my-swiper-slide">
             <Card maxW="sm" bgColor="transparent">
               <CardBody>
-                <Image src={product.thumbnail} w="100%" h="100%" />
+                <Image src={product.image} w="100%" h="100%" />
               </CardBody>
             </Card>
           </SwiperSlide>
